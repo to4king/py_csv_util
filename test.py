@@ -56,3 +56,9 @@ class TestPyCsvUtil:
         csv_util = PyCsvUtil()
         str_arg = '1,2,6-9,16'
         assert set(csv_util.str_to_list(str_arg)) == set([1,2,6,7,8,9,16]) 
+
+    def test_str_to_list_return_value_with_non_default_delimiter(self):
+        """ 文字列→配列変換メソッドの戻り値テスト（非デフォルトデリミタ） """
+        csv_util = PyCsvUtil(delimiter='~')
+        str_arg = '1,2,6~9,16'
+        assert set(csv_util.str_to_list(str_arg)) == set([1,2,6,7,8,9,16]) 
