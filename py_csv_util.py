@@ -11,7 +11,10 @@ class PyCsvUtil:
         range_delimiter: str, default '-'
             範囲として扱う文字列のデリミタ（区切り文字）
         """
-        self._range_delimiter = range_delimiter
+        if isinstance(range_delimiter, str):
+            self._range_delimiter = range_delimiter
+        else:
+            raise TypeError("invalid delimiter type")
 
     def list_to_str(self, list_arg):
         """
