@@ -2,17 +2,17 @@ import re
 import itertools
 
 class PyCsvUtil:
-    def __init__(self, range_delimiter='-'):
+    def __init__(self, delimiter='-'):
         """
         コンストラクタ
 
         Parameters
         --------
-        range_delimiter: str, default '-'
+        delimiter: str, default '-'
             範囲として扱う文字列のデリミタ（区切り文字）
         """
-        if isinstance(range_delimiter, str):
-            self._range_delimiter = range_delimiter
+        if isinstance(delimiter, str):
+            self._range_delimiter = delimiter
         else:
             raise TypeError("invalid delimiter type")
 
