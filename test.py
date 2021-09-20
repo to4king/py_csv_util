@@ -1,12 +1,24 @@
+from re import match
 import pytest
 from py_csv_util import PyCsvUtil
 
 
 class TestPyCsvUtil:
-    def test_init_arg_type(self):
-        """ 範囲区切り文字が文字列型であることのテスト """
+    def test_default_delimiter_type(self):
+        """ デフォルトの範囲区切り文字が文字列型であること """
         csv_util = PyCsvUtil()
         assert isinstance(csv_util._range_delimiter, str)
+
+    def test_default_delimiter_val(self):
+        """ デフォルトの範囲区切り文字が'-'であること """
+        csv_util = PyCsvUtil()
+        assert csv_util._range_delimiter == '-'
+
+    def test_delimiter_typec_check(self):
+        """ 引数のデリミタの型チェック """
+        with pytest.raises(TypeError):
+            csv_util = PyCsvUtil(1)
+
     
     def test_list_to_str_arg_type(self):
         """ 配列→文字列変換メソッドの引数テスト """
