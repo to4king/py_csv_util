@@ -32,6 +32,12 @@ class TestPyCsvUtil:
         test_list = [1, 2, 3]
         assert isinstance(csv_util.list_to_str(test_list), str)
 
+    def test_list_to_str_return_value(self):
+        """ 配列→文字列変換メソッドの戻り値テスト """
+        csv_util = PyCsvUtil()
+        test_list = [1, 2, 3]
+        assert csv_util.list_to_str(test_list) == '1,2,3'
+
     def test_str_to_list_arg_type(self):
         """ 文字列→配列変換メソッドの引数型チェック """
         csv_util = PyCsvUtil()
@@ -44,3 +50,9 @@ class TestPyCsvUtil:
         csv_util = PyCsvUtil()
         str_arg = '1,2,6-9,16'
         assert isinstance(csv_util.str_to_list(str_arg), list)
+
+    def test_str_to_list_return_value(self):
+        """ 文字列→配列変換メソッドの戻り値テスト """
+        csv_util = PyCsvUtil()
+        str_arg = '1,2,6-9,16'
+        assert set(csv_util.str_to_list(str_arg)) == set([1,2,6,7,8,9,16]) 
