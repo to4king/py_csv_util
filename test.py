@@ -1,7 +1,5 @@
-from re import match
 import pytest
 from py_csv_util import PyCsvUtil
-
 
 class TestPyCsvUtil:
     def test_default_delimiter_type(self):
