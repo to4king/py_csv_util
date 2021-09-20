@@ -1,5 +1,5 @@
 import re
-
+import itertools
 
 class PyCsvUtil:
     def __init__(self, range_delimiter='-'):
@@ -61,18 +61,18 @@ class PyCsvUtil:
             文字列以外を引数に渡すと発生
         """
         if isinstance(str_arg, str):
-            _match_pattern = r'\d+'+self._range_delimiter+r'\d+'
-            _converted_list = []
-            for str_item in str_arg.split(','):
-                if re.match(_match_pattern, str_item):
-                    _range_list = str_item.split(self._range_delimiter)
-                    _range_start = int(_range_list[0])
-                    _range_end = int(_range_list[1])
-                    for i in range(_range_start, _range_end+1):
-                        _converted_list.append(i)
-                else:
-                    if len(str_item):
-                        _converted_list.append(int(str_item))
-            return _converted_list
+            _converted_list = [self._make_list(str_item) for str_item in str_arg.split(',')]
+            return list(itertools.chain.from_iterable(_converted_list))
         else:
             raise TypeError
+
+
+    def _make_list(self, str_arg):
+        # should be rename '_match_pattern'
+        _match_pattern = r'\d+'+self._range_delimiter+r'\d+'
+        if re.match(_match_pattern, str_arg):
+                    # should be rename '_range_list'
+                    _range_list = str_arg.split(self._range_delimiter)
+                    _generated_list = [i for i in range(int(_range_list[0]), int(_range_list[1])+1)]
+                    return _generated_list
+        return [int(str_arg)]
