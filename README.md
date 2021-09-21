@@ -2,10 +2,10 @@
 
 ## About
 
-CSV文字列とリストの変換を行うモジュールです。
+CSV 文字列とリストの変換を行うモジュールです。
 
 リストへの変換元文字列はカンマ区切り数字文字列を想定しています。
-コンストラクタ引数に”区切り文字”を指定することができ、CSV文字列中に範囲を示すカラムがあれば”区切り文字”の左辺、右辺を開始値/終了値として扱います。
+コンストラクタ引数に”区切り文字”を指定することができ、CSV 文字列中に範囲を示すカラムがあれば”区切り文字”の左辺、右辺を開始値/終了値として扱います。
 
 ## Requirements
 
@@ -35,14 +35,17 @@ CSV文字列とリストの変換を行うモジュールです。
 
 ## Reference
 
-- ***`__init__([range_delimiter])`***
+- **_`__init__([range_delimiter])`_**
+
   - コンストラクタ
   - Parameters
-    - range_delimiter: 範囲区切り文字
+    - delimiter: 範囲区切り文字
     - Type: String
+    - optional: true
     - Default: -(hyphen)
 
-- ***`list_to_str(list_arg)`***
+- **_`list_to_str(list_arg)`_**
+
   - リストをカンマ区切り文字列に変換する
   - Parameters
     - list_arg: 変換対象リスト
@@ -51,9 +54,9 @@ CSV文字列とリストの変換を行うモジュールです。
     - return_value: カンマ区切り文字列
     - Type: String
   - Raises
-    - TypeError: 引数にList以外を与えると発生
+    - TypeError: 引数に List 以外を与えると発生
 
-- ***`str_to_list(str_arg)`***
+- **_`str_to_list(str_arg)`_**
   - カンマ区切り文字列をリストに変換する
   - デリミタに指定された範囲区切り文字が含まれる場合、デリミタの左辺/右辺を開始値/終了値として扱う
   - Parameters
@@ -63,8 +66,8 @@ CSV文字列とリストの変換を行うモジュールです。
     - return_value: カンマごとに分割した値を要素に持つリスト
     - Type: List
   - Raises
-    - TypeError: 引数にString以外を与えると発生
+    - TypeError: 引数に String 以外を与えると発生
 
 ## Feature tasks
 
-- [ ] PyPIモジュール化
+- [ ] PyPI モジュール化
